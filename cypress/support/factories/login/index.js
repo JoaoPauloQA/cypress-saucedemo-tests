@@ -9,3 +9,9 @@ exports.invalidLogin = {
     user: 'joao',
     password: '14mkij'
 }
+
+exports.blockedUser = {
+
+    user: 'locked_out_user',
+    password: 'secret_sauce'
+}

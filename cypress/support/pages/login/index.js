@@ -11,8 +11,14 @@ class Login {
 
     fillCredentials(userData) {
 
-        cy.get(el.user).type(userData.user)
-        cy.get(el.password).type(userData.password)
+        if (userData?.user) {
+            cy.get(el.user).type(userData.user)
+
+        }
+        if (userData?.password) {
+            cy.get(el.password).type(userData.password)
+
+        }
 
     }
 
@@ -22,7 +28,12 @@ class Login {
 
     }
 
-    
+    checkErrorMessage(expectedMessage){
+
+        cy.get('h3[data-test="error"]').should('contain', expectedMessage)
+    }
+
+
 
 }
 

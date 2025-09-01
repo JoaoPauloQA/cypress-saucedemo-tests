@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import Login from '../support/pages/login/'
+
+
+Cypress.Commands.add('UILogin', function(userData){
+
+        Login.go()
+        Login.fillCredentials(userData)
+        Login.submit() 
+    
+})
