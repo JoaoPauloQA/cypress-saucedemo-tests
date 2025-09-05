@@ -33,3 +33,16 @@ Cypress.Commands.add('UILogin', function(userData){
         Login.submit() 
     
 })
+
+Cypress.Commands.add('checkLoginPage', function () {
+
+   
+        cy.get('input[data-test="username"]').should('be.visible')
+})
+
+Cypress.Commands.add('checkProductsPage', function () {
+
+
+         cy.get('span[data-test="title"]')
+            .should('have.text', 'Products')
+})

@@ -33,6 +33,17 @@ class Login {
         cy.get('h3[data-test="error"]').should('contain', expectedMessage)
     }
 
+    LogoutButton(){
+
+
+        cy.contains(el.LogoutButton).click()
+    }
+
+    MenuButton() {
+
+        cy.contains(el.menuButton).click()
+    }
+
 
 
 }

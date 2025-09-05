@@ -1,4 +1,5 @@
 import { user, invalidLogin, blockedUser } from '../support/factories/login'
+import errors from '../support/factories/constants/errors'
 import Login from '../support/pages/login/'
 
 
@@ -11,11 +12,21 @@ context('Realizar Login', function () {
 
         cy.UILogin(user)
 
-
-        cy.get('span[data-test="title"]')
-            .should('have.text', 'Products')
+        cy.checkProductsPage()
     })
 
+})
+
+context('Logout', function () {
+
+    it('Deve redirecionar para a tela de Login ao realizar logout', function () {
+
+        cy.UILogin(user)
+        Login.MenuButton()
+        Login.LogoutButton()
+        cy.checkLoginPage()
+
+    })
 })
 
 context('Visualizar mensagem de login inválido', function () {
@@ -26,7 +37,7 @@ context('Visualizar mensagem de login inválido', function () {
 
         cy.UILogin(invalidLogin)
 
-        Login.checkErrorMessage('Epic sadface: Username and password do not match any user in this service')
+        Login.checkErrorMessage(errors.invalidUser)
 
 
     })
@@ -37,7 +48,7 @@ context('Visualizar mensagem de login inválido', function () {
 
         cy.UILogin({ user: '', password: '' });
 
-        Login.checkErrorMessage('Epic sadface: Username is required')
+        Login.checkErrorMessage(errors.requiredUsername)
 
 
 
@@ -48,22 +59,21 @@ context('Visualizar mensagem de login inválido', function () {
 
         cy.UILogin({ user: 'standard_user', password: '' })
 
-        Login.checkErrorMessage('Epic sadface: Password is required')
+        Login.checkErrorMessage(errors.requiredPassword)
     })
 
-    
 
-    it ('Deve exibir mensagem de erro ao tentar Logar com usuário bloqueado', function () {
-        
+
+    it('Deve exibir mensagem de erro ao tentar Logar com usuário bloqueado', function () {
+
         cy.UILogin(blockedUser)
 
-        Login.checkErrorMessage('Epic sadface: Sorry, this user has been locked out.')
+        Login.checkErrorMessage(errors.blockedUser)
 
-         
+
     })
 
 })
-
 
 
 

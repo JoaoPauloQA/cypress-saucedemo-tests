@@ -1,5 +1,5 @@
  Funcionalidade: Realizar Login
- Cenário: deve realizar login
+  Cenário: deve realizar login
   Dado que o usuário está na página de login do site
   Quando ele preenche o login e a senha corretos
   E clica no botão "Login"
@@ -8,7 +8,7 @@
 
 
  Funcionalidade: Visualizar mensagem de login inválido
- Cenário: Login com email e senha inválidos
+  Cenário: Login com email e senha inválidos
   Dado que o usuário está na página inicial
   Quando ele preenche um email e senha inválidos
   E clica no botão "Login"
