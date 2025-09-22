@@ -2,8 +2,11 @@ import {el} from './elements'
 
 class Products {
 
-addtoCart() {
-        cy.contains(el.carbutton).click()
+addProduct(ProductName) {
+        cy.contains(el.carbutton, ProductName)
+        .closest('.inventory_item')
+        .find('button[data-test^="add-to-cart-"]')
+        .click()
        
     }
 
