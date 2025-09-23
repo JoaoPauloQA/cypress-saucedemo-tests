@@ -45,4 +45,12 @@ Cypress.Commands.add('checkProductsPage', function () {
 
          cy.get('span[data-test="title"]')
             .should('have.text', 'Products')
+}) 
+
+
+Cypress.Commands.add('FiltroButton', function (filtro) { 
+
+        cy.get('select[data-test="product-sort-container"]').select(filtro)
+
+
 })

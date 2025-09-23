@@ -47,22 +47,34 @@ context('Carrinho de compras', function () {
         Products.addProduct(Produtos.Backpack)
         Products.clickCart()
 
-        cy.contains(Produtos.Backpack).click()
+        Products.Detailsbutton(Produtos.Backpack)
 
-         cy.get('div[data-test="inventory-item-name"]')
-         .should('be.visible')
-         .contains(Produtos.Backpack)
-    })  
+        Products.ValidarDetalhesProduto(Produtos.Backpack)
+            
+    })
 
-    it ('Deve remover produto do carrinho', function () {
-
+    it('Deve remover produto do carrinho', function () {
 
 
-     Products.addProduct(Produtos.fleeceJacket)
-     Products.clickCart()
-     cy.get('button[data-test="remove-sauce-labs-fleece-jacket"]').click()
 
-    cy.get('span[data-test="shopping-cart-badge"]').should('not.exist')
+        Products.addProduct(Produtos.fleeceJacket)
+        Products.clickCart()
+        Products.RemoverProduto('sauce-labs-fleece-jacket')
+
+        Products.ValidarCarrinhoVazio()
+
+    }) 
+
+    it ('Deve ordenar os produtos por preço (baixo-alto)', function () {
+
+         cy.FiltroButton('Price (low to high)')
+
+    }) 
+
+    it (' Deve ordenar os produtos por preço (alto-baixo', function () {
+
+        cy.FiltroButton('Price (high to low)')
+
 
     })
 })

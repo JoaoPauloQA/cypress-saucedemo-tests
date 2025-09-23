@@ -16,6 +16,26 @@ addProduct(ProductName) {
 
     }
 
+    RemoverProduto(product) {
+
+        cy.get(el.RemoveButton(product)).click()
+    }
+
+    ValidarCarrinhoVazio() {
+
+         cy.get(el.carIcon).should('not.exist')
+    }
+
+    ValidarDetalhesProduto() {
+
+        cy.get(el.Detalhes).should('be.visible')
+    }
+
+    Detailsbutton(ProductName) { 
+
+        cy.contains(ProductName).click()
+    }
+
 }
 
 export default new Products ()
