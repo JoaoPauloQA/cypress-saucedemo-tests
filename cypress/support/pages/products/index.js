@@ -36,6 +36,10 @@ addProduct(ProductName) {
         cy.contains(ProductName).click()
     }
 
+    
+
+      
+
 }
 
 export default new Products ()

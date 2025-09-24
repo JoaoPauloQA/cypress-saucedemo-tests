@@ -53,4 +53,52 @@ Cypress.Commands.add('FiltroButton', function (filtro) {
         cy.get('select[data-test="product-sort-container"]').select(filtro)
 
 
-})
+}) 
+
+Cypress.Commands.add('ValidarOrdemPorPreço', function ( ordem = 'asc') {
+
+          cy.get('.inventory_item_price')
+             .then(($Prices) => {
+
+                let pricesText =  [...$Prices].map((el => el.innerText.replace('$', ''))
+             )
+
+             let ordenado = [...pricesText].sort((a, b) => a - b)
+
+             if (ordem === 'desc') { 
+
+                ordenado = ordenado.reverse()
+             }
+
+             expect(pricesText).to.deep.equal(ordenado)
+             
+             })
+    })
+
+    Cypress.Commands.add('ValidarOrdemPorNome', function ( ordem = 'asc') {
+
+
+        cy.get('.inventory_item_name')
+            .then(($Names) => {
+
+                let namesText = [...$Names].map((el => el.innerText))
+
+                let ordenado = [...namesText].sort((a, b) => a.localeCompare(b))
+
+                if ( ordem === 'desc') {
+
+                        ordenado = ordenado.reverse()
+                }
+
+                expect(namesText).to.deep.equal(ordenado)
+            })
+    }) 
+
+
+    Cypress.Commands.add('CheckProductsPage', function () {
+
+           cy.get('span[data-test="title"]').should('have.text', 'Products')
+
+    })
+
+

@@ -8,6 +8,7 @@ context('Carrinho de compras', function () {
     beforeEach(function () {
 
         cy.UILogin(user)
+       
     })
 
 
@@ -69,12 +70,35 @@ context('Carrinho de compras', function () {
 
          cy.FiltroButton('Price (low to high)')
 
+         cy.ValidarOrdemPorPreço('asc')
+
+         
+
     }) 
 
     it (' Deve ordenar os produtos por preço (alto-baixo', function () {
 
         cy.FiltroButton('Price (high to low)')
 
+        cy.ValidarOrdemPorPreço('desc')
 
+
+    })
+
+    it (" Deve ordenar os produtos por nome (A-Z)", function () {
+
+
+        cy.FiltroButton('Name (A to Z)') 
+
+        cy.ValidarOrdemPorNome('asc')
+
+    })
+
+    it (" Deve ordenar os produtos por nome (Z-A)", function () { 
+
+
+        cy.FiltroButton('Name (Z to A)')
+
+        cy.ValidarOrdemPorNome('desc')
     })
 })
