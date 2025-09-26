@@ -3,20 +3,28 @@ import { user } from '../support/factories/login'
 import Produtos from '../support/factories/constants/Products'
 import CartPage from '../support/pages/cartPage'
 
-context('Carrinho de compras', function () {
+
+describe('Carrinho de compras', function () {
 
     beforeEach(function () {
 
         cy.UILogin(user)
-       
+
     })
 
 
     it('Visualizar produto no carrinho', function () {
 
+        
+
+
+        cy.allure().step('Adicionar produto Backpack');
         Products.addProduct(Produtos.Backpack)
+
+        cy.allure().step('Abrir Carrinho');
         Products.clickCart()
 
+        cy.allure().step('Ver produto no carrinho');
         CartPage.validarProdutonoCarrinho(Produtos.Backpack)
 
 
@@ -24,6 +32,9 @@ context('Carrinho de compras', function () {
 
 
     it('Deve adicionar múltiplos produtos e validar', function () {
+
+        cy.allure().feature('Carrinho')
+        cy.allure().story('Adicionar múltiplos produtos')
 
 
         Products.addProduct(Produtos.Backpack)
@@ -45,13 +56,16 @@ context('Carrinho de compras', function () {
 
     it('Deve visualizar detalhes do produto', function () {
 
+        cy.allure().feature('Carrinho')
+        cy.allure().story('Visualizar detalhes do produto')
+
         Products.addProduct(Produtos.Backpack)
         Products.clickCart()
 
         Products.Detailsbutton(Produtos.Backpack)
 
         Products.ValidarDetalhesProduto(Produtos.Backpack)
-            
+
     })
 
     it('Deve remover produto do carrinho', function () {
@@ -64,19 +78,19 @@ context('Carrinho de compras', function () {
 
         Products.ValidarCarrinhoVazio()
 
-    }) 
+    })
 
-    it ('Deve ordenar os produtos por preço (baixo-alto)', function () {
+    it('Deve ordenar os produtos por preço (baixo-alto)', function () {
 
-         cy.FiltroButton('Price (low to high)')
+        cy.FiltroButton('Price (low to high)')
 
-         cy.ValidarOrdemPorPreço('asc')
+        cy.ValidarOrdemPorPreço('asc')
 
-         
 
-    }) 
 
-    it (' Deve ordenar os produtos por preço (alto-baixo', function () {
+    })
+
+    it(' Deve ordenar os produtos por preço (alto-baixo', function () {
 
         cy.FiltroButton('Price (high to low)')
 
@@ -85,16 +99,16 @@ context('Carrinho de compras', function () {
 
     })
 
-    it (" Deve ordenar os produtos por nome (A-Z)", function () {
+    it(" Deve ordenar os produtos por nome (A-Z)", function () {
 
 
-        cy.FiltroButton('Name (A to Z)') 
+        cy.FiltroButton('Name (A to Z)')
 
         cy.ValidarOrdemPorNome('asc')
 
     })
 
-    it (" Deve ordenar os produtos por nome (Z-A)", function () { 
+    it(" Deve ordenar os produtos por nome (Z-A)", function () {
 
 
         cy.FiltroButton('Name (Z to A)')

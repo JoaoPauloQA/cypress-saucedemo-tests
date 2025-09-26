@@ -25,6 +25,11 @@ class CartPage {
     cy.get('span[data-test="shopping-cart-badge"]').should('have.text', quantidade)
   }
 
+  CheckOutButton () {
+
+    cy.get('button[data-test="checkout"]').click()
+  }
+
 }
 
 export default new CartPage
