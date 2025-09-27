@@ -15,16 +15,11 @@ describe('Carrinho de compras', function () {
 
     it('Visualizar produto no carrinho', function () {
 
-        
+        cy.setAllure('Carrinho', 'Visualizar produto no carrinho')
 
-
-        cy.allure().step('Adicionar produto Backpack');
         Products.addProduct(Produtos.Backpack)
-
-        cy.allure().step('Abrir Carrinho');
         Products.clickCart()
 
-        cy.allure().step('Ver produto no carrinho');
         CartPage.validarProdutonoCarrinho(Produtos.Backpack)
 
 
@@ -33,8 +28,7 @@ describe('Carrinho de compras', function () {
 
     it('Deve adicionar múltiplos produtos e validar', function () {
 
-        cy.allure().feature('Carrinho')
-        cy.allure().story('Adicionar múltiplos produtos')
+         cy.setAllure('Carrinho', 'Adicionar múltiplos produtos')
 
 
         Products.addProduct(Produtos.Backpack)
@@ -56,8 +50,7 @@ describe('Carrinho de compras', function () {
 
     it('Deve visualizar detalhes do produto', function () {
 
-        cy.allure().feature('Carrinho')
-        cy.allure().story('Visualizar detalhes do produto')
+        cy.setAllure('Carrinho', 'Visualizar detalhes do produto')
 
         Products.addProduct(Produtos.Backpack)
         Products.clickCart()
@@ -70,7 +63,7 @@ describe('Carrinho de compras', function () {
 
     it('Deve remover produto do carrinho', function () {
 
-
+         cy.setAllure('Carrinho', 'Remover produto do carrinho')
 
         Products.addProduct(Produtos.fleeceJacket)
         Products.clickCart()
@@ -82,6 +75,8 @@ describe('Carrinho de compras', function () {
 
     it('Deve ordenar os produtos por preço (baixo-alto)', function () {
 
+        cy.setAllure('Produtos', 'Ordenar produtos por preço (baixo-alto)')
+
         cy.FiltroButton('Price (low to high)')
 
         cy.ValidarOrdemPorPreço('asc')
@@ -92,6 +87,8 @@ describe('Carrinho de compras', function () {
 
     it(' Deve ordenar os produtos por preço (alto-baixo', function () {
 
+        cy.setAllure('Produtos', 'Ordenar produtos por preço (alto-baixo)')
+
         cy.FiltroButton('Price (high to low)')
 
         cy.ValidarOrdemPorPreço('desc')
@@ -100,6 +97,8 @@ describe('Carrinho de compras', function () {
     })
 
     it(" Deve ordenar os produtos por nome (A-Z)", function () {
+
+        cy.setAllure('Produtos', 'Ordenar produtos por nome (A-Z)')
 
 
         cy.FiltroButton('Name (A to Z)')
@@ -110,7 +109,7 @@ describe('Carrinho de compras', function () {
 
     it(" Deve ordenar os produtos por nome (Z-A)", function () {
 
-
+        cy.setAllure('Produtos', 'Ordenar produtos por nome (Z-A)')
         cy.FiltroButton('Name (Z to A)')
 
         cy.ValidarOrdemPorNome('desc')

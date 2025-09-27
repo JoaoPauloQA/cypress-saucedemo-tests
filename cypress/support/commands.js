@@ -26,79 +26,87 @@
 import Login from '../support/pages/login/'
 
 
-Cypress.Commands.add('UILogin', function(userData){
+Cypress.Commands.add('UILogin', function (userData) {
 
         Login.go()
         Login.fillCredentials(userData)
-        Login.submit() 
-    
+        Login.submit()
+
 })
 
 Cypress.Commands.add('checkLoginPage', function () {
 
-   
+
         cy.get('input[data-test="username"]').should('be.visible')
 })
 
 Cypress.Commands.add('checkProductsPage', function () {
 
 
-         cy.get('span[data-test="title"]')
-            .should('have.text', 'Products')
-}) 
+        cy.get('span[data-test="title"]')
+                .should('have.text', 'Products')
+})
 
 
-Cypress.Commands.add('FiltroButton', function (filtro) { 
+Cypress.Commands.add('FiltroButton', function (filtro) {
 
         cy.get('select[data-test="product-sort-container"]').select(filtro)
 
 
-}) 
+})
 
-Cypress.Commands.add('ValidarOrdemPorPreço', function ( ordem = 'asc') {
+Cypress.Commands.add('ValidarOrdemPorPreço', function (ordem = 'asc') {
 
-          cy.get('.inventory_item_price')
-             .then(($Prices) => {
+        cy.get('.inventory_item_price')
+                .then(($Prices) => {
 
-                let pricesText =  [...$Prices].map((el => el.innerText.replace('$', ''))
-             )
+                        let pricesText = [...$Prices].map((el => el.innerText.replace('$', ''))
+                        )
 
-             let ordenado = [...pricesText].sort((a, b) => a - b)
+                        let ordenado = [...pricesText].sort((a, b) => a - b)
 
-             if (ordem === 'desc') { 
+                        if (ordem === 'desc') {
 
-                ordenado = ordenado.reverse()
-             }
+                                ordenado = ordenado.reverse()
+                        }
 
-             expect(pricesText).to.deep.equal(ordenado)
-             
-             })
-    })
+                        expect(pricesText).to.deep.equal(ordenado)
 
-    Cypress.Commands.add('ValidarOrdemPorNome', function ( ordem = 'asc') {
+                })
+})
+
+Cypress.Commands.add('ValidarOrdemPorNome', function (ordem = 'asc') {
 
 
         cy.get('.inventory_item_name')
-            .then(($Names) => {
+                .then(($Names) => {
 
-                let namesText = [...$Names].map((el => el.innerText))
+                        let namesText = [...$Names].map((el => el.innerText))
 
-                let ordenado = [...namesText].sort((a, b) => a.localeCompare(b))
+                        let ordenado = [...namesText].sort((a, b) => a.localeCompare(b))
 
-                if ( ordem === 'desc') {
+                        if (ordem === 'desc') {
 
-                        ordenado = ordenado.reverse()
-                }
+                                ordenado = ordenado.reverse()
+                        }
 
-                expect(namesText).to.deep.equal(ordenado)
-            })
-    }) 
-
-
-    Cypress.Commands.add('CheckProductsPage', function () {
-
-           cy.get('span[data-test="title"]').should('have.text', 'Products')
-
-    })
+                        expect(namesText).to.deep.equal(ordenado)
+                })
+})
 
 
+Cypress.Commands.add('ValidarProductsPage', function (TituloEsperado) {
+
+        cy.get('span[data-test="title"]').should('have.text', TituloEsperado)
+
+})
+
+
+
+
+Cypress.Commands.add('setAllure', function (feature, story) {
+
+        cy.allure().feature(feature)
+        cy.allure().story(story)
+
+})
