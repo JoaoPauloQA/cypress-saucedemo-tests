@@ -12,12 +12,12 @@ Além disso, o projeto está configurado em CI/CD para execução automática no
 
 📌 Cenários de Teste
 
-✔️ Login com sucesso
-✔️ Login inválido
-✔️ Adicionar produtos ao carrinho
-✔️ Fluxo completo de Checkout (campos obrigatórios e finalização)
-✔️ Validação de mensagens de erro (nome, sobrenome, CEP)
-✔️ Validação do valor total da compra
+- ✔️ Login com sucesso
+- ✔️ Login inválido
+- ✔️ Adicionar produtos ao carrinho
+- ✔️ Fluxo completo de Checkout (campos obrigatórios e finalização)
+- ✔️ Validação de mensagens de erro (nome, sobrenome, CEP)
+- ✔️ Validação do valor total da compra
 
 ## 📊 Relatórios com Allure
 
