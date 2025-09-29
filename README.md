@@ -1,70 +1,79 @@
 # 🧪 Testes Automatizados com Cypress
 
-Este repositório contém testes end-to-end (E2E) para aplicações web, desenvolvidos com Cypress, com foco em boas práticas de automação.
+Este repositório contém uma suíte de testes automatizados para o e-commerce SauceDemo, cobrindo fluxos críticos como login, carrinho e checkout.
+
+Os testes foram desenvolvidos com Cypress seguindo boas práticas de automação, utilizando Page Objects, Cypress Commands e relatórios gerados com Allure.
+Além disso, o projeto está configurado em CI/CD para execução automática no GitHub Actions.
 
 ## 🚀 Tecnologias e bibliotecas utilizadas
-- Cypress 13 – Testes E2E 
+- **Cypress** 13 – Testes E2E 
 - **allure** – Relatórios detalhados de execução
+- **GitHub Actions** – Integração Contínua (CI/CD)
 
-## 🧱 Padrões de projeto utilizados
+📌 Cenários de Teste
 
-- **Page Object Model (POM):** Separação das interações de página em arquivos próprios, para facilitar reutilização e manutenção dos testes.
-- **Command Pattern:** Ações comuns encapsuladas em comandos customizados do Cypress 
+✔️ Login com sucesso
+✔️ Login inválido
+✔️ Adicionar produtos ao carrinho
+✔️ Fluxo completo de Checkout (campos obrigatórios e finalização)
+✔️ Validação de mensagens de erro (nome, sobrenome, CEP)
+✔️ Validação do valor total da compra
 
-## 📸 Demonstração 
+## 📊 Relatórios com Allure
+
+Os relatórios de execução são gerados automaticamente com o Allure.
+Para visualizar localmente:
+
+npm run allure:generate
+npm run allure:open
 
 
-## 🔧 Instalação e Execução
+Exemplo de relatório:
 
-### Pré-requisitos
+## ⚙️ Integração Contínua (CI/CD)
 
-- Node.js >= 16.14.0 ([site oficial](https://nodejs.org/))  
-- Yarn  
- 
+O pipeline está configurado no GitHub Actions, garantindo:
 
-## Passo a passo
+Execução automática a cada push/pull request
+Geração dos relatórios de testes
+Validação do código antes do merge
+
+
+## ▶️ Como Executar Localmente
 ```bash
- 1. Clone este repositório 
+ Clone o repositório:
 
-git clone https://github.com/JoaoPauloQA/testes-automatizados-com-cypress
-cd seuprojeto  
+git clone https://github.com/JoaoPauloQA/cypress-saucedemo-tests.git
+cd cypress-saucedemo-tests
 
-2. Instale as dependências do projeto
 
-yarn install 
+Instale as dependências:
 
-6. Execute os testes com Cypress
-Para abrir a interface visual: 
+npm install
+
+
+Execute os testes no modo interativo:
+
 npx cypress open
 
+
+Ou em modo headless (para CI/CD):
+
+npx cypress run
+
 ```
-
-
-## ✅  testes implementados
-
-### UI
-- **Login** (válido, inválido e via token)
-- **Recuperação de senha** (fluxo completo)
-- **Registro de usuário** (dados dinâmicos, validações)
-
-### Outros tipos de testes
-
-- **Integração**: Fluxos completos como login → adicionar produto → checkout
-- **Regressão**: Executados via CI/CD no GitHub Actions
-- **Exploratórios**: Testes negativos, inputs inválidos e cenários de borda
-
-
 ## 📁 Estrutura do projeto
 
 ```bash
 cypress/
-├── fixtures/         
-├── e2e/      # Testes (specs)
-│   ├── login.cy.js
-│   └── Products.cy.js
-├── support/
-│   ├── commands.js   # Comandos customizados
-│   └── index.js      # Configurações globais
+  ├── e2e/                # Cenários de testes
+  ├── support/
+  │   ├── commands.js     # Cypress Commands customizados
+  │   ├── pages/          # Page Objects
+  │   └── factories/      # Massa de dados e constantes
+.github/
+  └── workflows/          # Pipeline de CI/CD
+
 
 ```
 
