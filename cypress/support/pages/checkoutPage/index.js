@@ -3,18 +3,34 @@ import { el } from './elements'
 class checkoutPage {
 
 
-    fillCheckoutForm() {
-         
-        cy.get(el.FirstName).type('John')
-        cy.get(el.lastName).type('Krauser')
-        cy.get(el.zipCode).type('12345')
+    fillCheckoutForm(userData) {
 
-    }
+        if (userData.FirstName) {
+            cy.get(el.FirstName).type(userData.FirstName)
+        }
+            if (userData.lastName) {
+                cy.get(el.lastName).type(userData.lastName)
+            }
+            if (userData.zipCode) {
+            cy.get(el.zipCode).type(userData.zipCode)
+            }
 
-    ContinueButton() {
+        }
+    
 
-        cy.get(el.continueButton).click()
-    }
+
+
+        checkErrorMessage(expectedMessage) {
+
+            cy.get('h3[data-test="error"]').should('contain', expectedMessage)
+        }
+
+        ContinueButton() {
+
+            cy.get(el.continueButton).click()
+        }
+    
 }
+
 
 export default new checkoutPage()

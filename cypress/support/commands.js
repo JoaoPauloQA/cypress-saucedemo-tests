@@ -95,7 +95,7 @@ Cypress.Commands.add('ValidarOrdemPorNome', function (ordem = 'asc') {
 })
 
 
-Cypress.Commands.add('ValidarProductsPage', function (TituloEsperado) {
+Cypress.Commands.add('ValidarPagina', function (TituloEsperado) {
 
         cy.get('span[data-test="title"]').should('have.text', TituloEsperado)
 
@@ -109,4 +109,15 @@ Cypress.Commands.add('setAllure', function (feature, story) {
         cy.allure().feature(feature)
         cy.allure().story(story)
 
+})
+
+Cypress.Commands.add('validarTotalCompra', function (totalEsperado) {
+
+
+        cy.get('.summary_total_label')
+        .invoke('text')
+        .then((text) => {
+                const total = parseFloat(text.replace('Total: $', ''))
+                expect(total).to.be.greaterThan(totalEsperado)
+        })
 })
