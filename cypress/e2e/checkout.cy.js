@@ -43,7 +43,7 @@ context('checkoutPage', function () {
 
     })
 
-    it.only('Deve validar preço total da compra', function () {
+    it('Deve validar preço total da compra', function () {
 
         cy.setAllure('CheckOut', 'Deve validar preço total da compra')
         checkoutPage.fillCheckoutForm(checkoutCredentials)
