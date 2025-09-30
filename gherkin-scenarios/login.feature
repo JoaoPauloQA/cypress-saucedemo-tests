@@ -4,6 +4,12 @@
   Quando ele preenche o login e a senha corretos
   E clica no botão "Login"
   Então ele é direcionado para a página de produtos
+
+  Funcionalidade: Redirecionar para a tela de login
+   Cenário: Logout leva usuário para a tela de login
+   Dado que o usuário está logado e na página inicial
+   Quando ele clica no botão Logout 
+   Então ele é redirecionado para a pagina de login
   
 
 
