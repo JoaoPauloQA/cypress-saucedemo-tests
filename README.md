@@ -39,6 +39,10 @@ Execução automática a cada push/pull request
 Geração dos relatórios de testes
 Validação do código antes do merge
 
+- Pipeline rodando no **GitHub Actions**  
+![CI/CD](assets/CI-CD.png)
+
+
 
 ## ▶️ Como Executar Localmente
 ```bash
