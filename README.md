@@ -29,6 +29,7 @@ npm run allure:open
 
 
 Exemplo de relatório:
+![Allure Report](assets/allure-reports.png)
 
 ## ⚙️ Integração Contínua (CI/CD)
 
