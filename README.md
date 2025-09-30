@@ -6,7 +6,7 @@ Os testes foram desenvolvidos com Cypress seguindo boas práticas de automação
 Além disso, o projeto está configurado em CI/CD para execução automática no GitHub Actions.
 
 ## 🚀 Tecnologias e bibliotecas utilizadas
-- **Cypress** 13 – Testes E2E 
+- **Cypress 13.17.0** – Testes E2E 
 - **allure** – Relatórios detalhados de execução
 - **GitHub Actions** – Integração Contínua (CI/CD)
 
@@ -43,6 +43,12 @@ Validação do código antes do merge
 ![CI/CD](assets/CI-CD.png)
 
 
+## 📝 Cenários em Gherkin (BDD)
+
+Além dos testes automatizados em Cypress, este projeto inclui cenários escritos em Gherkin no diretório `/gherkin-scenarios`.
+
+Esses arquivos seguem o formato **Given-When-Then** para descrever casos de uso de forma clara e acessível, permitindo que pessoas não técnicas também compreendam os fluxos de teste.
+
 
 ## ▶️ Como Executar Localmente
 ```bash
@@ -70,14 +76,19 @@ npx cypress run
 ## 📁 Estrutura do projeto
 
 ```bash
+
 cypress/
-  ├── e2e/                # Cenários de testes
+  ├── e2e/                # Cenários de testes 
   ├── support/
   │   ├── commands.js     # Cypress Commands customizados
   │   ├── pages/          # Page Objects
   │   └── factories/      # Massa de dados e constantes
+gherkin-scenarios/        # Cenários de teste escritos em BDD (Gherkin)
 .github/
-  └── workflows/          # Pipeline de CI/CD
+  └── workflows/          # Pipeline de CI/CD (GitHub Actions)
+package.json              # Dependências e scripts do projeto
+cypress.config.js         # Configuração do Cypress
+
 
 
 ```
