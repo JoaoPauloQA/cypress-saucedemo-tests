@@ -29,6 +29,11 @@ class checkoutPage {
 
             cy.get(el.continueButton).click()
         }
+
+        FinishButton() {
+
+            cy.get('button[data-test="finish"]').click()
+        }
     
 }
 

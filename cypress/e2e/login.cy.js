@@ -1,10 +1,10 @@
-import { user, invalidLogin, blockedUser } from '../support/factories/login'
+import { user, invalidLogin, blockedUser , WithoutUser, noPassword} from '../support/factories/login'
 import errors from '../support/factories/constants/errors'
 import Login from '../support/pages/login/'
 
 
 
-context(' Login', function () {
+describe(' Login', function () {
 
 
     it('deve realizar login', function () {
@@ -16,7 +16,7 @@ context(' Login', function () {
         cy.checkProductsPage()
     })
 
-})
+
 
 
 it('Deve redirecionar para a tela de Login ao realizar logout', function () {
@@ -47,7 +47,7 @@ it('Deve exibir mensagem de erro ao deixar campos em branco', function () {
 
     cy.setAllure('Login', 'Deve exibir mensagem de erro ao deixar campos em branco')
 
-    cy.UILogin({ user: '', password: '' });
+    cy.UILogin(WithoutUser);
 
     Login.checkErrorMessage(errors.requiredUsername)
 
@@ -59,7 +59,7 @@ it('Deve exibir mensagem de erro solicitando a senha', function () {
 
     cy.setAllure('Login', 'Deve exibir mensagem de erro solicitando a senha')
 
-    cy.UILogin({ user: 'standard_user', password: '' })
+    cy.UILogin(noPassword)
 
     Login.checkErrorMessage(errors.requiredPassword)
 })
@@ -78,7 +78,7 @@ it('Deve exibir mensagem de erro ao tentar Logar com usuário bloqueado', functi
 })
 
 
-
+})
 
 
 

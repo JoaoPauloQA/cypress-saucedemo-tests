@@ -39,6 +39,12 @@ context('checkoutPage', function () {
 
         cy.ValidarPagina('Checkout: Overview')
 
+        checkoutPage.FinishButton()
+
+        cy.validarCheckoutcompleto()
+
+       
+
 
 
     })

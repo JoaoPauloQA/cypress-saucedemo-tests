@@ -121,3 +121,8 @@ Cypress.Commands.add('validarTotalCompra', function (totalEsperado) {
                 expect(total).to.be.greaterThan(totalEsperado)
         })
 })
+
+Cypress.Commands.add('validarCheckoutcompleto', function () {
+
+         cy.contains('h2[data-test="complete-header"]','Thank you for your order!').should('be.visible')
+})

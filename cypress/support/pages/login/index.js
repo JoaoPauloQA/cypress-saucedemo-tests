@@ -11,11 +11,11 @@ class Login {
 
     fillCredentials(userData) {
 
-        if (userData?.user) {
+        if (userData.user) {
             cy.get(el.user).type(userData.user)
 
         }
-        if (userData?.password) {
+        if (userData.password) {
             cy.get(el.password).type(userData.password)
 
         }
