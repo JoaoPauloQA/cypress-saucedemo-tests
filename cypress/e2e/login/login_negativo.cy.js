@@ -1,34 +1,12 @@
-import { user, invalidLogin, blockedUser , WithoutUser, noPassword} from '../support/factories/login'
-import errors from '../support/factories/constants/errors'
-import Login from '../support/pages/login/'
+import { invalidLogin, blockedUser , WithoutUser, noPassword} from '../../support/factories/login'
+import errors from '../../support/factories/constants/errors'
+import Login from '../../support/pages/login'
 
 
 
-describe(' Login', function () {
+describe(' Login - Fluxo Negativo', function () {
 
 
-    it('deve realizar login', function () {
-
-        cy.setAllure('Login', 'Deve realizar login com sucesso')
-
-        cy.UILogin(user)
-
-        cy.checkProductsPage()
-    })
-
-
-
-
-it('Deve redirecionar para a tela de Login ao realizar logout', function () {
-
-    cy.setAllure('Login', 'Deve redirecionar para a tela de Login ao realizar Logout')
-
-    cy.UILogin(user)
-    Login.MenuButton()
-    Login.LogoutButton()
-    cy.checkLoginPage()
-
-})
 
 it('Login com email e senha inválidos', function () {
 

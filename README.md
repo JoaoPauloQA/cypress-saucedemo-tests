@@ -7,7 +7,8 @@ Além disso, o projeto está configurado em CI/CD para execução automática no
 
 ## 🚀 Tecnologias e bibliotecas utilizadas
 - **Cypress 13.17.0** – Testes E2E 
-- **allure** – Relatórios detalhados de execução
+- **allure Plugin** – @shelex/cypress-allure-plugin ^2.41.0
+- **Allure Commandline**: ^2.34.1
 - **GitHub Actions** – Integração Contínua (CI/CD)
 
 📌 Cenários de Teste
